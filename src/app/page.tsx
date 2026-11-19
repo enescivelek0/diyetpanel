@@ -26,7 +26,7 @@ export default function Home() {
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5">
         <Logo />
         <nav className="flex items-center gap-2">
-          <Link href="/giris" className="btn-ghost">Panel girişi</Link>
+          <Link href="/panel" className="btn-ghost">Demo paneli</Link>
           <Link href="/randevu" className="btn-primary hidden sm:inline-flex">Demo randevu al</Link>
         </nav>
       </header>
@@ -46,7 +46,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/randevu" className="btn-primary px-6 py-3 text-base">Randevu sayfasını gör</Link>
-              <Link href="/giris" className="btn-ghost px-6 py-3 text-base">Paneli incele</Link>
+              <Link href="/panel" className="btn-ghost px-6 py-3 text-base">Diyetisyen panelini incele</Link>
             </div>
           </div>
         </section>

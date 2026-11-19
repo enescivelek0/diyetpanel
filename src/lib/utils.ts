@@ -9,6 +9,12 @@ export function todayIstanbul(): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: TZ }).format(new Date());
 }
 
+/** YYYY-MM-DD tarihine gün ekler */
+export function addDays(date: string, n: number): string {
+  const d = new Date(`${date}T12:00:00+03:00`);
+  return new Intl.DateTimeFormat("en-CA", { timeZone: TZ }).format(new Date(d.getTime() + n * 86400000));
+}
+
 /** Bugünden itibaren pazar hariç N gün (YYYY-MM-DD) */
 export function bookableDates(n = BOOKING_DAYS): string[] {
   const out: string[] = [];
