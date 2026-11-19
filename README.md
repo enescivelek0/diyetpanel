@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DiyetPanel
 
-## Getting Started
+Diyetisyenler için online randevu, WhatsApp hatırlatma ve danışan takibi.
 
-First, run the development server:
+## Özellikler
+
+- **Tanıtım sayfası** (`/`): ürünün satış sayfası
+- **Online randevu** (`/randevu`): gün ve saat seçimi, dolu saatler kapalı, çift rezervasyon veritabanı seviyesinde engellenir, KVKK onayı
+- **Diyetisyen paneli** (`/panel`): günlük/haftalık özet, randevu onaylama/iptal/tamamlama, tek tıkla WhatsApp onay ve hatırlatma mesajı
+- **Danışan kartı** (`/panel/danisanlar/[id]`): kilo/bel ölçümü kaydı, kilo grafiği, randevu geçmişi
+
+## Teknoloji
+
+Next.js 16 (App Router, Server Actions) · TypeScript · Tailwind CSS v4 · Postgres (Neon) · yerelde PGlite
+
+## Yerelde çalıştırma
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`DATABASE_URL` tanımlı değilse veriler `.pglite/` klasöründeki yerel Postgres'e yazılır, kurulum gerekmez.
+Panel şifresi yerelde `demo1234`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Yayına alma (Vercel)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Projeyi Vercel'e bağlayın ve **Storage → Neon** ile bir Postgres veritabanı ekleyin (`DATABASE_URL` otomatik eklenir).
+2. `ADMIN_PASSWORD` ortam değişkenini tanımlayın.
+3. Deploy edin. Tablolar ilk istekte otomatik oluşturulur.
 
-## Learn More
+## Yol haritası
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Çoklu diyetisyen (multi-tenant, `isim.diyetpanel.com`)
+- [ ] WhatsApp Business API ile otomatik hatırlatma (Cron)
+- [ ] Diyet listesi oluşturma ve PDF
+- [ ] Danışan uygulaması (PWA): su/öğün takibi
+- [ ] iyzico ile abonelik ödemesi
